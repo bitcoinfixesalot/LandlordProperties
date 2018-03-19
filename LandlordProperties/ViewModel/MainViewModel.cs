@@ -72,11 +72,18 @@ namespace LandlordProperties.ViewModel
 
 
 
-        public int Errors { get; set; }
+        public int Errors
+        {
+            get { return _errors; }
+            set {
+                _errors = value;
+                SavePropertiesCommand.RaiseCanExecuteChanged();
+            }
+        }
 
         public bool CanSave()
         {
-            if (Errors == 0)
+            if (Errors == 0 && SelectedProperty != null)
                 return true;
             else
                 return false;
@@ -104,11 +111,13 @@ namespace LandlordProperties.ViewModel
 
         public ObservableCollection<PropertyModel> LandlordProperties
         {
-            get {
+            get
+            {
                 if (_landlordProperties == null)
                     _landlordProperties = new ObservableCollection<PropertyModel>();
 
-                return _landlordProperties; }
+                return _landlordProperties;
+            }
             set
             {
                 _landlordProperties = value;
@@ -125,6 +134,7 @@ namespace LandlordProperties.ViewModel
             {
                 if (_selectedProperty == value) return;
                 _selectedProperty = value;
+                SavePropertiesCommand.RaiseCanExecuteChanged();
                 RaisePropertyChanged(nameof(SelectedProperty));
             }
         }
@@ -133,6 +143,7 @@ namespace LandlordProperties.ViewModel
         private Landlord _selectedLandlord;
         private RelayCommand _newPropertyCommand;
         private RelayCommand _savePropertyCommand;
+        private int _errors;
 
         public Landlord SelectedLandlord
         {

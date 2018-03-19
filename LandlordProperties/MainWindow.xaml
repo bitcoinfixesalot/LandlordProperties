@@ -107,6 +107,5 @@
 
             <Button Name="saveButton" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" Content="Save" Command="{Binding Path=DataContext.SavePropertiesCommand, RelativeSource= {RelativeSource FindAncestor, AncestorType={x:Type Window}}}"  />
         </Grid>
-     
     </Grid>
 </Window>

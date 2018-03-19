@@ -49,18 +49,6 @@ namespace LandlordProperties.ViewModel
             return SelectedLandlord != null;
         }
 
-        //private bool _addNewEnabled;
-
-        //public bool AddNewEnabled
-        //{
-        //    get { return _addNewEnabled; }
-        //    set
-        //    {
-        //        _addNewEnabled = value;
-        //        RaisePropertyChanged(nameof(AddNewEnabled));
-        //    }
-        //}
-
         private void AddNewProperty()
         {
             if (SelectedLandlord == null) return;
